@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JSON Big Eye</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">JSON&nbsp;Big&nbsp;Eye</div>
+    <div class="source" id="source" title=""></div>
+    <div class="search">
+      <input id="search" type="search" placeholder="Search keys and values  ( / )" autocomplete="off" spellcheck="false">
+      <ul id="results" hidden></ul>
+    </div>
+    <div class="tools">
+      <button id="fit" title="Fit graph to screen">Fit</button>
+      <button id="reset" title="Collapse everything back to the root">Reset</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="cy"></div>
+    <aside id="panel">
+      <p class="hint" id="hint">Click a node to expand it. Click again to collapse.<br>
+        Large arrays and objects are shown 100 children at a time — use the ◀ / ▶ pager nodes.</p>
+      <div id="details" hidden>
+        <div class="row path-row">
+          <code id="d-path"></code>
+          <button id="copy-path" title="Copy JSON path">Copy</button>
+        </div>
+        <dl>
+          <dt>Type</dt><dd id="d-type"></dd>
+          <dt>Children</dt><dd id="d-count"></dd>
+          <dt>Depth</dt><dd id="d-depth"></dd>
+        </dl>
+        <form id="goto" hidden>
+          <label for="goto-idx">Show children from index</label>
+          <div class="row">
+            <input id="goto-idx" type="number" min="0" step="1">
+            <button type="submit">Go</button>
+          </div>
+        </form>
+        <div class="value-head">
+          <span>Value</span><span id="d-trunc" class="trunc" hidden>truncated</span>
+        </div>
+        <pre id="d-value"></pre>
+      </div>
+    </aside>
+  </main>
+
+  <footer id="status">Loading…</footer>
+
+  <script src="/static/vendor/cytoscape.min.js"></script>
+  <script src="/static/vendor/dagre.min.js"></script>
+  <script src="/static/vendor/cytoscape-dagre.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
